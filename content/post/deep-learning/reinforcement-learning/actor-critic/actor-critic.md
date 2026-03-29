@@ -1,5 +1,5 @@
 ---
-title: "Actor Critic Method"
+title: "4-Actor Critic Method"
 description: 
 date: 2023-06-10T14:57:53+08:00
 image:

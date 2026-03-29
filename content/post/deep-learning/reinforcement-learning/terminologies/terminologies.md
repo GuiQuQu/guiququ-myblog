@@ -1,5 +1,5 @@
 ---
-title: "强化学习基本术语"
+title: "1-强化学习基本术语"
 description: 
 date: 2023-06-08T20:48:38+08:00
 image:
@@ -33,6 +33,8 @@ Action $a \in \{ left,right,up \}$
 - **Policy** $\pi$
 
 策略
+
+参考解释什么是概率密度函数，什么是概率质量函数，什么是概率分布函数：[知乎](https://www.zhihu.com/search?q=%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0&search_source=Suggestion&utm_content=search_suggestion&type=content)
 
 Policy function $\pi$是一个PDF,它描述了在某一状态下,Agent采取某一action的概率。
 
@@ -72,10 +74,14 @@ state transition 可能是随机的,这个随机性来自于环境。
 
 例如在马里奥游戏中,我们也不知道下一时刻敌人会怎么移动。
 
+
+使用p表示状态转移，是一个条件概率函数，条件和当前的state和action有关。
+
 $$
  p (s^\prime |s,a) = P(S=s^\prime | S=s,A=a)
 $$
 表示$S=s,A=a$下,状态S转移到$s^\prime$的概率。
+
 ## 随机性的来源
 
 - Action的随机性,因为Action是从Policy采样的。
@@ -127,6 +133,13 @@ $U_t$是一个随机变量,因为我们必须直到游戏结束才能观察到�
 
 ## Value Function
 
+
+$U_t$是一个随机变量，我们不到$t$时刻不是不知道$U_t$的值的，但是我们期望到$t$时刻的$U_t$的值越高越好，所以我们
+对$U_t$求期望，希望该期望越高越高
+
+因为$U_t$是依赖于$S_t,...,S_n$和$A_t,...,A_n$的随机变量。积掉不同的随机变量，就可以得到不同的价值函数
+
+
 价值函数,分为两种,分别是State Value Function和Action Value Function。
 
 - **Action-Value Function** $Q_\pi (s,a)$,定义如下
@@ -141,8 +154,15 @@ $$
 
 $Q_\pi (s_t,a_t)$衡量了当前状态$s_t$下,采取动作$a_t$的价值。
 
-$Q_\pi (s_t,a_t)$依赖于$s_t,a_t,\pi,p$
-。
+$Q_\pi (s_t,a_t)$依赖于$s_t,a_t,\pi,p$。
+
+最优的Action-Value Function $Q^* (s,a)$,定义如下
+$$
+Q^* (s,a) = \max_\pi Q_\pi (s,a)
+$$
+在所有的策略$\pi$中,选择一个使得$Q_\pi (s,a)$最大的策略。
+
+
 - **State-Value Function** $V_\pi (s)$,定义如下
 
 $$
@@ -165,9 +185,15 @@ $$
 
 利用OpenAI Gym的环境,评测强化学习算法。里面会提供一些标准场景。
 
+## AI如何控制Agent
+
+1. 基于策略函数$\pi$，在状态$s_t$下，从中采样一个动作$a_t \sim \pi(\cdot | s_t)$，从而实现控制，这种方式称为Policy-based learning的方法。
+2. 基于最优价值函数$Q^*$，选择一个最优动作$a_t = \arg \max_a Q^* (s_t,a)$，从而实现控制，这种方式称为Value-based learning的方法。
+
 # Reference
 
 1. [DRL](https://github.com/wangshusen/DRL)
+
 
 
  

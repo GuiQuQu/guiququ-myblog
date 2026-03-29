@@ -1,5 +1,5 @@
 ---
-title: "基于Value Function的强化学习"
+title: "2-Value Based 的强化学习"
 description: 
 date: 2023-06-09T22:19:44+08:00
 image:
@@ -13,6 +13,8 @@ categories:
 
 目前强化学习相关的内容全部来自于[DRL](https://github.com/wangshusen/DRL)
 我也只是把一些基本的概念写下来，防止自己忘记了
+
+Value Based 的强化学习学习最优价值函数$Q*(s,a)$。
 
 需要先确认好动作价值函数$Q_\pi(s_t,a_t)$和状态价值哈数$V_\pi(s_t)$的概念。
 

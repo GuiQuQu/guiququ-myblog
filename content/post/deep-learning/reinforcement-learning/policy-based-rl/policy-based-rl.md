@@ -1,5 +1,5 @@
 ---
-title: "Policy Based RL"
+title: "3-Policy Based 的强化学习"
 description: 
 date: 2023-06-10T00:54:40+08:00
 image:
@@ -13,6 +13,8 @@ categories:
 
 目前强化学习相关的内容全部来自于[DRL](https://github.com/wangshusen/DRL)
 我也只是把一些基本的概念写下来，防止自己忘记了
+
+Policy Based 的强化学习学习策略函数$\pi$。
 
 # Policy Based Reinforcement Learning
 
